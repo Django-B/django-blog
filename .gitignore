@@ -1,3 +1,4 @@
 setenv.sh
 env/
 **/__pycache__/
+**/migrations/
