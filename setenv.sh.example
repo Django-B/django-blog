@@ -1,3 +1,11 @@
+# Настройки для SMTP
 export EMAIL_HOST_USER=example@gmail.com
 export EMAIL_HOST_PASSWORD=
 export EMAIL_PORT=587 # not required
+
+# Настройки PostgreSQL
+export POSTGRESQL_NAME=blog
+export POSTGRESQL_USER=blog
+export POSTGRESQL_PASSWORD=
+export POSTGRESQL_HOST=127.0.0.1
+export POSTGRESQL_PORT=5432
