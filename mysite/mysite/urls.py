@@ -17,4 +17,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     re_path(r'^oauth/', include('social_django.urls', namespace='social')),
+    path('api/', include('blog_api.urls')),
+    # path("api/v1/", include("blog_api_v1.urls")), # API версия 1
+    # path("api/v2/", include("blog_api_v2.urls")), # API версия 2
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
