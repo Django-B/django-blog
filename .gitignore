@@ -2,3 +2,5 @@ setenv.sh
 env/
 **/__pycache__/
 **/migrations/
+**/media/profile_images/*
+mysite/db.sqlite3
