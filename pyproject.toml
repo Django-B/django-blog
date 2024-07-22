@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "django-blog"
+version = "0.1.0"
+description = ""
+authors = ["Django-B <django.ppp@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.7"
+social-auth-app-django = "^5.4.2"
+django-taggit = "^5.0.1"
+django-bootstrap5 = "^24.2"
+markdown = "^3.6"
+pillow = "^10.4.0"
+psycopg = "^3.2.1"
+psycopg-binary = "^3.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
