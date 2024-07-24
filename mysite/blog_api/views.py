@@ -1,13 +1,10 @@
-from django.http import Http404
-
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status, mixins, generics, filters
+from rest_framework import generics, filters, permissions
+from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 
 from blog.models import Post
 from .serializers import PostSerializer
-from rest_framework.pagination import PageNumberPagination
+from .permissions import IsAuthorOrReadOnly
 
 
 class StandardResultsSetPagination(PageNumberPagination):
@@ -16,6 +13,7 @@ class StandardResultsSetPagination(PageNumberPagination):
     max_page_size = 10
 
 class PostList(generics.ListCreateAPIView):
+    permission_classes = [IsAuthorOrReadOnly]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
@@ -31,6 +29,7 @@ class PostList(generics.ListCreateAPIView):
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = [IsAuthorOrReadOnly]
 
 # Например, следующий подкласс будет искать только по title, если в запросе присутствует параметр запроса title_only
 class CustomSearchFilter(filters.SearchFilter):
