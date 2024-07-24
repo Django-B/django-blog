@@ -7,7 +7,13 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from blog.models import Post
 from .serializers import PostSerializer
+from rest_framework.pagination import PageNumberPagination
 
+
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 3
+    page_size_query_param = 'page_size'
+    max_page_size = 10
 
 class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
@@ -20,6 +26,7 @@ class PostList(generics.ListCreateAPIView):
                      'author__profile__bio']
     ordering_fields = ['author_id', 'publish']
     ordering = ['body'] # сортировка по умолчанию
+    pagination_class = StandardResultsSetPagination
     
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
